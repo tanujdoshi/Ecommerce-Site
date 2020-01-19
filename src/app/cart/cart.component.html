@@ -1,0 +1,180 @@
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="icon" href="../assets/img/favicon.png" type="image/png" />
+  <title>Eiser ecommerce</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+  <link rel="stylesheet" href="../assets/vendors/linericon/style.css" />
+  <link rel="stylesheet" href="../assets/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="../assets/css/themify-icons.css" />
+  <link rel="stylesheet" href="../assets/css/flaticon.css" />
+  <link rel="stylesheet" href="../assets/vendors/owl-carousel/owl.carousel.min.css" />
+  <link rel="stylesheet" href="../assets/vendors/lightbox/simpleLightbox.css" />
+  <link rel="stylesheet" href="../assets/vendors/nice-select/css/nice-select.css" />
+  <link rel="stylesheet" href="../assets/vendors/animate-css/animate.css" />
+  <link rel="stylesheet" href="../assets/vendors/jquery-ui/jquery-ui.css" />
+  <!-- main css -->
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/responsive.css" />
+</head>
+<body>
+  {{obj|json}}
+  {{obj1}}
+
+        <section class="banner_area">
+                <div class="banner_inner d-flex align-items-center">
+                  <div class="container">
+                    <div
+                      class="banner_content d-md-flex justify-content-between align-items-center"
+                    >
+                      <div class="mb-3 mb-md-0">
+                        <h2>Cart</h2>
+                        <p>Very us move be blessed multiply night</p>
+                      </div>
+                      <div class="page_link">
+                        <a href="index.html">Home</a>
+                        <a href="cart.html">Cart</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <!--================End Home Banner Area =================-->
+          
+              <!--================Cart Area =================-->
+              <section class="cart_area">
+                <div class="container">
+                  <div class="cart_inner">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Delete</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of obj; let i = index">
+                            <td>
+                              <div class="media">
+                                <div class="d-flex">
+                                  <img
+                                    src="{{item.img1}}"
+                                    alt=""
+                                    class="img-thumbnail"
+                                  />
+                                </div>
+                                <div class="media-body">
+                                  <!-- <p>{{i.name}}</p> -->
+                                  <p>{{item.name}}</p>
+                                </div>
+                              </div>
+                            </td>
+                            <td>
+                              <!-- <h5>{{i.price}}</h5> -->
+                              <h5>{{item.price}}</h5>
+                            </td>
+                            <td>
+                                <div class="product_count">
+                                    <label for="qty">Quantity:</label>
+                                    <input
+                                      type="text"
+                                      name="qty"
+                                      id="sst"
+                                      maxlength="12"
+                                      value="{{obj1[i]}}"
+                                      title="Quantity:"
+                                      class="input-text qty"
+                                    />
+                                    <button
+                                      onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+                                      class="increase items-count"
+                                      type="button"
+                                    >
+                                    <i class="fa fa-angle-up" aria-hidden="true"></i> 
+                                    </button>
+                                    <button
+                                      onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+                                      class="reduced items-count"
+                                      type="button"
+                                    >
+                                    <i class="fa fa-angle-down" aria-hidden="true"></i></button>
+                                  </div>
+                            </td>
+                            <td>
+                              <h5>{{item.price*obj1[i]}}</h5>
+                            </td>
+                            <td>
+                                <a [routerLink]="['/deletecart']" [queryParams]="{ 'id': item._id } ">
+                                <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                                </a>
+
+                            </td>
+                          </tr>
+                      
+                    
+                          <tr class="bottom_button">
+                            <td>
+                              <!-- <a class="gray_btn" (click)="update(sst)">Update Cart</a> -->
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                              <div class="cupon_text">
+                                <input type="text" placeholder="Coupon Code" />
+                                <a class="main_btn" href="#">Apply</a>
+                                <a class="gray_btn" href="#">Close Coupon</a>
+                              </div>
+                            </td>
+                          </tr>
+                        
+                          <tr class="shipping_area">
+                            <td></td>
+                            <td></td>
+                            <td>
+                              <h5>Shipping</h5>
+                            </td>
+                            <td>
+                              <div class="shipping_box">
+                                <ul class="list">
+                                  <li class="active">
+                                    <a href="#">Local Delivery: $2.00</a>
+                                  </li>
+                                </ul>
+                                <h6>
+                                  Calculate Shipping
+                                  <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                </h6>
+                                <select class="shipping_select">
+                                  <option value="1">Bangladesh</option>
+                                  <option value="2">India</option>
+                                  <option value="4">Pakistan</option>
+                                </select>
+                                <select class="shipping_select">
+                                  <option value="1">Select a State</option>
+                                  <option value="2">Rajasthan</option>
+                                  <option value="4">Pune</option>
+                                </select>
+                                <input type="text" placeholder="Postcode/Zipcode" />
+                                <div class="checkout_btn_inner">
+                                    <a class="main_btn" routerLink="/order" (click)="order()">Proceed to checkout</a>
+                                  </div>
+                              </div>
+                            </td>
+                          </tr>
+                        
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              </body>
+            </html>
